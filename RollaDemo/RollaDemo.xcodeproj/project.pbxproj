@@ -16,6 +16,11 @@
 		3E8DE6482AADB94300556980 /* RollaDemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E8DE6472AADB94300556980 /* RollaDemoTests.swift */; };
 		3E8DE6522AADB94300556980 /* RollaDemoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E8DE6512AADB94300556980 /* RollaDemoUITests.swift */; };
 		3E8DE6542AADB94300556980 /* RollaDemoUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E8DE6532AADB94300556980 /* RollaDemoUITestsLaunchTests.swift */; };
+		3E8DE6692AADBD4900556980 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E8DE6682AADBD4900556980 /* Endpoint.swift */; };
+		3E8DE66B2AADBD6900556980 /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E8DE66A2AADBD6900556980 /* HTTPClient.swift */; };
+		3E8DE66D2AADBD7C00556980 /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E8DE66C2AADBD7C00556980 /* HTTPMethod.swift */; };
+		3E8DE66F2AADBD9100556980 /* RequestError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E8DE66E2AADBD9100556980 /* RequestError.swift */; };
+		3E8DE6722AADBDE500556980 /* URLComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E8DE6712AADBDE500556980 /* URLComponents.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +54,11 @@
 		3E8DE64D2AADB94300556980 /* RollaDemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RollaDemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3E8DE6512AADB94300556980 /* RollaDemoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RollaDemoUITests.swift; sourceTree = "<group>"; };
 		3E8DE6532AADB94300556980 /* RollaDemoUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RollaDemoUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		3E8DE6682AADBD4900556980 /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
+		3E8DE66A2AADBD6900556980 /* HTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
+		3E8DE66C2AADBD7C00556980 /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
+		3E8DE66E2AADBD9100556980 /* RequestError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestError.swift; sourceTree = "<group>"; };
+		3E8DE6712AADBDE500556980 /* URLComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLComponents.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,10 +109,11 @@
 		3E8DE62F2AADB94200556980 /* RollaDemo */ = {
 			isa = PBXGroup;
 			children = (
-				3E8DE6302AADB94200556980 /* RollaDemoApp.swift */,
-				3E8DE6322AADB94200556980 /* Persistence.swift */,
-				3E8DE6372AADB94200556980 /* ContentView.swift */,
-				3E8DE6392AADB94300556980 /* Assets.xcassets */,
+				3E8DE6642AADBAF600556980 /* Application */,
+				3E8DE6632AADBAEF00556980 /* Model */,
+				3E8DE6622AADBAEA00556980 /* View */,
+				3E8DE6612AADBAE100556980 /* View Model */,
+				3E8DE6602AADBADA00556980 /* Service */,
 				3E8DE63B2AADB94300556980 /* RollaDemo.entitlements */,
 				3E8DE6342AADB94200556980 /* RollaDemo.xcdatamodeld */,
 				3E8DE63C2AADB94300556980 /* Preview Content */,
@@ -133,6 +144,82 @@
 				3E8DE6532AADB94300556980 /* RollaDemoUITestsLaunchTests.swift */,
 			);
 			path = RollaDemoUITests;
+			sourceTree = "<group>";
+		};
+		3E8DE6602AADBADA00556980 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				3E8DE6652AADBCC800556980 /* Persistance */,
+				3E8DE6662AADBCCF00556980 /* Network */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		3E8DE6612AADBAE100556980 /* View Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "View Model";
+			sourceTree = "<group>";
+		};
+		3E8DE6622AADBAEA00556980 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				3E8DE6372AADB94200556980 /* ContentView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		3E8DE6632AADBAEF00556980 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		3E8DE6642AADBAF600556980 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				3E8DE6702AADBDD900556980 /* Extension */,
+				3E8DE6392AADB94300556980 /* Assets.xcassets */,
+				3E8DE6302AADB94200556980 /* RollaDemoApp.swift */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		3E8DE6652AADBCC800556980 /* Persistance */ = {
+			isa = PBXGroup;
+			children = (
+				3E8DE6322AADB94200556980 /* Persistence.swift */,
+			);
+			path = Persistance;
+			sourceTree = "<group>";
+		};
+		3E8DE6662AADBCCF00556980 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				3E8DE6672AADBD2E00556980 /* Base */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		3E8DE6672AADBD2E00556980 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				3E8DE6682AADBD4900556980 /* Endpoint.swift */,
+				3E8DE66A2AADBD6900556980 /* HTTPClient.swift */,
+				3E8DE66C2AADBD7C00556980 /* HTTPMethod.swift */,
+				3E8DE66E2AADBD9100556980 /* RequestError.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		3E8DE6702AADBDD900556980 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				3E8DE6712AADBDE500556980 /* URLComponents.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -265,10 +352,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3E8DE6722AADBDE500556980 /* URLComponents.swift in Sources */,
+				3E8DE66F2AADBD9100556980 /* RequestError.swift in Sources */,
 				3E8DE6312AADB94200556980 /* RollaDemoApp.swift in Sources */,
 				3E8DE6332AADB94200556980 /* Persistence.swift in Sources */,
+				3E8DE66D2AADBD7C00556980 /* HTTPMethod.swift in Sources */,
+				3E8DE66B2AADBD6900556980 /* HTTPClient.swift in Sources */,
 				3E8DE6382AADB94200556980 /* ContentView.swift in Sources */,
 				3E8DE6362AADB94200556980 /* RollaDemo.xcdatamodeld in Sources */,
+				3E8DE6692AADBD4900556980 /* Endpoint.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
