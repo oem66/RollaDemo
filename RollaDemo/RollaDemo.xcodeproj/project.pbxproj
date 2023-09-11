@@ -24,6 +24,8 @@
 		3E8DE6762AAEEC0100556980 /* BLEView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E8DE6752AAEEC0100556980 /* BLEView.swift */; };
 		3E8DE6782AAEEC2700556980 /* LocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E8DE6772AAEEC2700556980 /* LocationView.swift */; };
 		3E8DE67A2AAEEC6000556980 /* AlgorithmView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E8DE6792AAEEC6000556980 /* AlgorithmView.swift */; };
+		3E8DE67E2AAEF5CF00556980 /* LocationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E8DE67D2AAEF5CF00556980 /* LocationViewModel.swift */; };
+		3E8DE6812AAEF88F00556980 /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E8DE6802AAEF88F00556980 /* LocationService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +67,9 @@
 		3E8DE6752AAEEC0100556980 /* BLEView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BLEView.swift; sourceTree = "<group>"; };
 		3E8DE6772AAEEC2700556980 /* LocationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationView.swift; sourceTree = "<group>"; };
 		3E8DE6792AAEEC6000556980 /* AlgorithmView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlgorithmView.swift; sourceTree = "<group>"; };
+		3E8DE67D2AAEF5CF00556980 /* LocationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationViewModel.swift; sourceTree = "<group>"; };
+		3E8DE6802AAEF88F00556980 /* LocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
+		3E8DE6822AAEFC5E00556980 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +120,7 @@
 		3E8DE62F2AADB94200556980 /* RollaDemo */ = {
 			isa = PBXGroup;
 			children = (
+				3E8DE6822AAEFC5E00556980 /* Info.plist */,
 				3E8DE6642AADBAF600556980 /* Application */,
 				3E8DE6632AADBAEF00556980 /* Model */,
 				3E8DE6622AADBAEA00556980 /* View */,
@@ -155,6 +161,7 @@
 		3E8DE6602AADBADA00556980 /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				3E8DE67F2AAEF88000556980 /* Location */,
 				3E8DE6652AADBCC800556980 /* Persistance */,
 				3E8DE6662AADBCCF00556980 /* Network */,
 			);
@@ -164,6 +171,7 @@
 		3E8DE6612AADBAE100556980 /* View Model */ = {
 			isa = PBXGroup;
 			children = (
+				3E8DE67D2AAEF5CF00556980 /* LocationViewModel.swift */,
 			);
 			path = "View Model";
 			sourceTree = "<group>";
@@ -229,6 +237,14 @@
 				3E8DE6712AADBDE500556980 /* URLComponents.swift */,
 			);
 			path = Extension;
+			sourceTree = "<group>";
+		};
+		3E8DE67F2AAEF88000556980 /* Location */ = {
+			isa = PBXGroup;
+			children = (
+				3E8DE6802AAEF88F00556980 /* LocationService.swift */,
+			);
+			path = Location;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -361,6 +377,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3E8DE6812AAEF88F00556980 /* LocationService.swift in Sources */,
 				3E8DE6722AADBDE500556980 /* URLComponents.swift in Sources */,
 				3E8DE67A2AAEEC6000556980 /* AlgorithmView.swift in Sources */,
 				3E8DE66F2AADBD9100556980 /* RequestError.swift in Sources */,
@@ -370,6 +387,7 @@
 				3E8DE6332AADB94200556980 /* Persistence.swift in Sources */,
 				3E8DE6762AAEEC0100556980 /* BLEView.swift in Sources */,
 				3E8DE66D2AADBD7C00556980 /* HTTPMethod.swift in Sources */,
+				3E8DE67E2AAEF5CF00556980 /* LocationViewModel.swift in Sources */,
 				3E8DE66B2AADBD6900556980 /* HTTPClient.swift in Sources */,
 				3E8DE6362AADB94200556980 /* RollaDemo.xcdatamodeld in Sources */,
 				3E8DE6692AADBD4900556980 /* Endpoint.swift in Sources */,
@@ -529,8 +547,13 @@
 				DEVELOPMENT_ASSET_PATHS = "\"RollaDemo/Preview Content\"";
 				DEVELOPMENT_TEAM = JB4H896VDB;
 				ENABLE_HARDENED_RUNTIME = YES;
+				"ENABLE_HARDENED_RUNTIME[sdk=macosx*]" = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = RollaDemo/Info.plist;
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Please grant access to location so we can calculate your speed and traveled distance.";
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "Please grant access to location so we can calculate your speed and traveled distance.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Please grant access to location so we can calculate your speed and traveled distance.";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -539,8 +562,7 @@
 				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
@@ -567,8 +589,13 @@
 				DEVELOPMENT_ASSET_PATHS = "\"RollaDemo/Preview Content\"";
 				DEVELOPMENT_TEAM = JB4H896VDB;
 				ENABLE_HARDENED_RUNTIME = YES;
+				"ENABLE_HARDENED_RUNTIME[sdk=macosx*]" = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = RollaDemo/Info.plist;
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Please grant access to location so we can calculate your speed and traveled distance.";
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "Please grant access to location so we can calculate your speed and traveled distance.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Please grant access to location so we can calculate your speed and traveled distance.";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -577,8 +604,7 @@
 				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
