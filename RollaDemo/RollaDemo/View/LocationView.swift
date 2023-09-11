@@ -13,29 +13,70 @@ struct LocationView: View {
     @StateObject var viewModel = LocationViewModel()
     
     var body: some View {
-        GeometryReader { proxy in
+        ZStack {
             Map(coordinateRegion: $viewModel.region, showsUserLocation: true, userTrackingMode: .constant(.follow))
-            .ignoresSafeArea(.all)
+                .ignoresSafeArea(.all)
             
             VStack {
-                // MARK: App logo, I'm out status, Search
-//                LocationTopElements(showLocation: $viewModel.showLocation, title: $viewModel.currentLocationStatus, viewModel: viewModel)
-                
                 Spacer()
-                
-                // MARK: Location preview
-//                if viewModel.showLocation {
-//                    withAnimation(.spring()) {
-//                        //                        LocationPreviewView(place: $viewModel.selectedPlace, showVenueView: $viewModel.showVenueView)
-//                        LocationPreviewView(place: $viewModel.selectedPlace, showLocation: $viewModel.showLocation)
-//                            .padding([.leading, .trailing], 10)
-//                            .padding(.bottom, 25)
-//                    }
-//                }
+                if viewModel.journeyStarted {
+                    SpeedAndDistance()
+                        .padding(.horizontal, 30)
+                        .padding(.bottom, 10)
+                    
+                }
+                StartStopButton()
+                    .padding([.horizontal, .bottom], 30)
             }
         }
         .onAppear {
             viewModel.setupLocationServices()
+        }
+    }
+    
+    @ViewBuilder
+    func StartStopButton() -> some View {
+        Button {
+            DispatchQueue.main.async {
+                withAnimation {
+                    viewModel.journeyStarted.toggle()
+                    viewModel.handleLocationUpdate()
+                }
+            }
+        } label: {
+            Text(viewModel.journeyStarted ? "Stop" : "Start")
+                .font(.custom("Avenir-Medium", size: 17))
+                .fontWeight(.heavy)
+                .padding(.vertical, 18)
+                .frame(maxWidth: .infinity, maxHeight: 50)
+                .background(viewModel.journeyStarted ? .red : .green)
+                .cornerRadius(20)
+                .shadow(color: Color.black.opacity(0.1), radius: 5, x: 5, y: 5)
+                .foregroundColor(.white)
+        }
+    }
+    
+    @ViewBuilder
+    func SpeedAndDistance() -> some View {
+        HStack {
+            VStack(alignment: .center) {
+                Spacer()
+                Text(String(format:"%.1f", viewModel.currentSpeed))
+                    .font(.custom("Avenir-Medium", size: 20))
+                    .fontWeight(.heavy)
+                    .foregroundColor(.white)
+                    .padding([.horizontal, .top], 15)
+                Text("km/h")
+                    .font(.custom("Avenir-Medium", size: 17))
+                    .fontWeight(.bold)
+                    .foregroundColor(.white)
+                    .padding([.horizontal, .bottom], 15)
+                Spacer()
+            }
+            .background(Color(red: 30/255, green: 39/255, blue: 46/255))
+            .cornerRadius(15)
+            .clipShape(Circle())
+            Spacer()
         }
     }
 }
