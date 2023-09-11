@@ -15,6 +15,7 @@ final class LocationViewModel: NSObject, ObservableObject, CLLocationManagerDele
     @Published var journeyStarted = false
     @Published var lastLocation: CLLocation?
     @Published var currentSpeed = 0.0
+    @Published var totalDistance = 0.0
     
     var locationManager = CLLocationManager()
     
@@ -55,7 +56,6 @@ final class LocationViewModel: NSObject, ObservableObject, CLLocationManagerDele
                 self.locationManager.showsBackgroundLocationIndicator = true
                 self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
                 self.locationManager.distanceFilter = 1.0
-                self.locationManager.startUpdatingLocation()
             }
         }
     }
@@ -82,9 +82,17 @@ final class LocationViewModel: NSObject, ObservableObject, CLLocationManagerDele
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let location = locations.last else { return }
         region = MKCoordinateRegion(center: location.coordinate, span: .init(latitudeDelta: 0.01, longitudeDelta: 0.01))
+        
+        // Calculate distance from the last location update
+        if let lastLocation = lastLocation {
+            let distance = lastLocation.distance(from: location)
+            totalDistance += distance
+        }
+        
+        lastLocation = location
+        
         for location in locations {
             speedometer(currentLocation: location)
         }
-        debugPrint("Location: \(location)")
     }
 }

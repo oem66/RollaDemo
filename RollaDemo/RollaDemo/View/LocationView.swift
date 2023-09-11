@@ -72,7 +72,24 @@ struct LocationView: View {
             .background(Color(red: 30/255, green: 39/255, blue: 46/255))
             .cornerRadius(15)
             .clipShape(Circle())
+            
             Spacer()
+            
+            VStack(alignment: .center) {
+                Text(String(format:"%.2f", (viewModel.totalDistance / 1000)))
+                    .font(.custom("Avenir-Medium", size: 20))
+                    .fontWeight(.heavy)
+                    .foregroundColor(.white)
+                    .padding([.horizontal, .top], 15)
+                Text("km")
+                    .font(.custom("Avenir-Medium", size: 17))
+                    .fontWeight(.bold)
+                    .foregroundColor(.white)
+                    .padding([.horizontal, .bottom], 15)
+            }
+            .background(Color(red: 30/255, green: 39/255, blue: 46/255))
+            .cornerRadius(15)
+            .clipShape(Circle())
         }
     }
 }
