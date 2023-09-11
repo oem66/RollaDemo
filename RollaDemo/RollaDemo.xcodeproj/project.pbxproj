@@ -25,7 +25,6 @@
 		3E8DE6782AAEEC2700556980 /* LocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E8DE6772AAEEC2700556980 /* LocationView.swift */; };
 		3E8DE67A2AAEEC6000556980 /* AlgorithmView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E8DE6792AAEEC6000556980 /* AlgorithmView.swift */; };
 		3E8DE67E2AAEF5CF00556980 /* LocationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E8DE67D2AAEF5CF00556980 /* LocationViewModel.swift */; };
-		3E8DE6812AAEF88F00556980 /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E8DE6802AAEF88F00556980 /* LocationService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,7 +67,6 @@
 		3E8DE6772AAEEC2700556980 /* LocationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationView.swift; sourceTree = "<group>"; };
 		3E8DE6792AAEEC6000556980 /* AlgorithmView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlgorithmView.swift; sourceTree = "<group>"; };
 		3E8DE67D2AAEF5CF00556980 /* LocationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationViewModel.swift; sourceTree = "<group>"; };
-		3E8DE6802AAEF88F00556980 /* LocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
 		3E8DE6822AAEFC5E00556980 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -161,7 +159,6 @@
 		3E8DE6602AADBADA00556980 /* Service */ = {
 			isa = PBXGroup;
 			children = (
-				3E8DE67F2AAEF88000556980 /* Location */,
 				3E8DE6652AADBCC800556980 /* Persistance */,
 				3E8DE6662AADBCCF00556980 /* Network */,
 			);
@@ -237,14 +234,6 @@
 				3E8DE6712AADBDE500556980 /* URLComponents.swift */,
 			);
 			path = Extension;
-			sourceTree = "<group>";
-		};
-		3E8DE67F2AAEF88000556980 /* Location */ = {
-			isa = PBXGroup;
-			children = (
-				3E8DE6802AAEF88F00556980 /* LocationService.swift */,
-			);
-			path = Location;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -377,7 +366,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3E8DE6812AAEF88F00556980 /* LocationService.swift in Sources */,
 				3E8DE6722AADBDE500556980 /* URLComponents.swift in Sources */,
 				3E8DE67A2AAEEC6000556980 /* AlgorithmView.swift in Sources */,
 				3E8DE66F2AADBD9100556980 /* RequestError.swift in Sources */,
