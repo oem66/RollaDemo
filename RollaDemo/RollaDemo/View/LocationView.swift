@@ -9,8 +9,13 @@ import Foundation
 import SwiftUI
 
 struct LocationView: View {
+    @StateObject var viewModel = LocationViewModel()
+    
     var body: some View {
         Text("Location View")
             .foregroundColor(.black)
+            .onAppear {
+                viewModel.setupLocationServices()
+            }
     }
 }
