@@ -22,8 +22,6 @@ struct LocationView: View {
                 if viewModel.journeyStarted {
                     SpeedAndDistance()
                         .padding(.horizontal, 30)
-                        .padding(.bottom, 10)
-                    
                 }
                 StartStopButton()
                     .padding([.horizontal, .bottom], 30)
@@ -60,7 +58,6 @@ struct LocationView: View {
     func SpeedAndDistance() -> some View {
         HStack {
             VStack(alignment: .center) {
-                Spacer()
                 Text(String(format:"%.1f", viewModel.currentSpeed))
                     .font(.custom("Avenir-Medium", size: 20))
                     .fontWeight(.heavy)
@@ -71,7 +68,6 @@ struct LocationView: View {
                     .fontWeight(.bold)
                     .foregroundColor(.white)
                     .padding([.horizontal, .bottom], 15)
-                Spacer()
             }
             .background(Color(red: 30/255, green: 39/255, blue: 46/255))
             .cornerRadius(15)
