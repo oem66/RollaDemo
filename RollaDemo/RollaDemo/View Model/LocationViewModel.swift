@@ -29,11 +29,8 @@ final class LocationViewModel: NSObject, ObservableObject, CLLocationManagerDele
         var speed = currentLocation.speed
         if (speed > 0) {
             currentSpeed = speed * 3.6
-            debugPrint("Speed (km/h): \(currentSpeed)")
-            debugPrint("Current speed: \(speed)")
         } else {
             speed = lastLocation!.distance(from: currentLocation) / (currentLocation.timestamp.timeIntervalSince(lastLocation!.timestamp))
-            debugPrint("Speed (mps): \(speed)")
         }
         lastLocation = currentLocation
     }
@@ -43,6 +40,7 @@ final class LocationViewModel: NSObject, ObservableObject, CLLocationManagerDele
             locationManager.startUpdatingLocation()
         } else {
             locationManager.stopUpdatingLocation()
+            totalDistance = 0.0
         }
     }
     
