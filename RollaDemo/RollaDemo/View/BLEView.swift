@@ -11,6 +11,5 @@ import SwiftUI
 struct BLEView: View {
     var body: some View {
         Text("BLE View")
-            .foregroundColor(.black)
     }
 }
