@@ -23,7 +23,10 @@ struct AlgorithmView: View {
                 }
                 Spacer()
             } else {
+                SelectSortingAlgorithm()
+                
                 Spacer()
+                
                 Text("Sorting 25 000 000 random integers took \(String(format:"%.2f", viewModel.timeElapsed)) seconds")
                     .font(.custom("Avenir-Medium", size: 24))
                     .fontWeight(.bold)
@@ -35,7 +38,6 @@ struct AlgorithmView: View {
                     .padding([.horizontal, .bottom], 30)
             }
         }
-        //        rgb(206, 214, 224)
         .background(Color(red: 206/255, green: 214/255, blue: 224/255))
     }
     
@@ -59,5 +61,44 @@ struct AlgorithmView: View {
                 .shadow(color: Color.black.opacity(0.1), radius: 5, x: 5, y: 5)
                 .foregroundColor(.white)
         }
+    }
+    
+    @ViewBuilder
+    func SelectSortingAlgorithm() -> some View {
+        HStack {
+            VStack(alignment: .center) {
+                Text("Ascending")
+                    .font(.custom("Avenir-Medium", size: 15))
+                    .foregroundColor(viewModel.ascendingFontColor)
+                    .fontWeight(.heavy)
+                    .padding(.vertical, 15)
+                    .padding(.horizontal, 30)
+            }
+            .frame(width: 150, height: 60)
+            .background(viewModel.ascendingBackgroundColor)
+            .cornerRadius(15)
+            .onTapGesture {
+                viewModel.setSortingType(.Ascending)
+            }
+            
+            Spacer()
+            
+            VStack(alignment: .center) {
+                Text("Descending")
+                    .font(.custom("Avenir-Medium", size: 15))
+                    .foregroundColor(viewModel.descendingFontColor)
+                    .fontWeight(.heavy)
+                    .padding(.vertical, 15)
+                    .padding(.horizontal, 30)
+            }
+            .frame(width: 150, height: 60)
+            .background(viewModel.descendingBackgroundColor)
+            .cornerRadius(15)
+            .onTapGesture {
+                viewModel.setSortingType(.Descending)
+            }
+        }
+        .padding(.horizontal, 30)
+        .padding(.top, 50)
     }
 }
