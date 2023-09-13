@@ -16,7 +16,6 @@ enum SortingType {
 
 enum SortingAlgorithm {
     case Apple
-    case Quicksort
     case BubbleSort
 }
 
@@ -76,7 +75,7 @@ final class AlgorithmViewModel: ObservableObject {
     func DoWork() {
         let serialQueue = DispatchQueue(label: "serialQueue")
         serialQueue.async {
-            self.performSorting(count: self.count, algorithm: .BubbleSort)
+            self.performSorting(count: self.count, algorithm: .Apple)
         }
     }
     
@@ -91,9 +90,7 @@ final class AlgorithmViewModel: ObservableObject {
         }
         switch algorithm {
         case .Apple:
-            sortRandomIntegers(&randomNumbers)
-        case .Quicksort:
-            quicksort(&randomNumbers, order: sortingType)
+            sortRandomIntegers(&randomNumbers, order: sortingType)
         case .BubbleSort:
             BubbleSort(&randomNumbers)
         }
@@ -103,16 +100,24 @@ final class AlgorithmViewModel: ObservableObject {
         }
     }
     
-    func sortRandomIntegers(_ numbers: inout [Int]) {
+    func sortRandomIntegers(_ numbers: inout [Int], order: SortingType) {
         let startTime = Date()
-        numbers.sort()
+        switch order {
+        case .Ascending:
+            numbers.sort()
+        case .Descending:
+            numbers.sort(by: >)
+        }
+        
         let endTime = Date()
         
         let timeElapsed = endTime.timeIntervalSince(startTime)
         DispatchQueue.main.async {
             self.timeElapsed = timeElapsed
         }
+        debugPrint(numbers)
         debugPrint("Sorting \(count) random integers took \(timeElapsed) seconds")
+        
     }
     
     // MARK: - Bubble sort algorithm
@@ -148,44 +153,5 @@ final class AlgorithmViewModel: ObservableObject {
             self.timeElapsed = timeElapsed
         }
         debugPrint("Bubble Sort \(count) random integers took \(timeElapsed) seconds")
-    }
-
-    // MARK: - Quicksort algorithm
-    func quicksort(_ array: inout [Int], low: Int, high: Int, order: SortingType) {
-        if low < high {
-            let pivotIndex = partition(&array, low: low, high: high, order: order)
-            if pivotIndex > 0 {
-                quicksort(&array, low: low, high: pivotIndex - 1, order: order)
-                debugPrint(pivotIndex)
-            }
-            quicksort(&array, low: pivotIndex + 1, high: high, order: order)
-        }
-    }
-    
-    func partition(_ array: inout [Int], low: Int, high: Int, order: SortingType) -> Int {
-        let pivot = array[high]
-        var i = low - 1
-        
-        for j in low..<high {
-            if (order == .Ascending && array[j] <= pivot) || (order == .Descending && array[j] >= pivot) {
-                i += 1
-                debugPrint(i)
-                array.swapAt(i, j)
-            }
-        }
-        
-        array.swapAt(i + 1, high)
-        return i + 1
-    }
-    
-    func quicksort(_ array: inout [Int], order: SortingType) {
-        let startTime = Date()
-        quicksort(&array, low: 0, high: array.count - 1, order: order)
-        let endTime = Date()
-        
-        let timeElapsed = endTime.timeIntervalSince(startTime)
-        DispatchQueue.main.async {
-            self.timeElapsed = timeElapsed
-        }
     }
 }
